@@ -1,0 +1,8 @@
+{
+  "autoload": {
+    "psr-0": { "": "src/" }
+  },
+  "require": {
+    "doctrine/collections": "dev-master"
+  }
+}
