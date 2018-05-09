@@ -2,17 +2,20 @@
 
 namespace DesignPattern\AbstractFactory;
 
-
+/**
+ * Interface ProductInterface
+ * @package DesignPattern\AbstractFactory
+ */
 interface ProductInterface
 {
     /**
      * ProductInterface constructor.
-     * @param string $name
+     * @return $this
      */
-    public function __construct($name);
+    public function __construct();
 
     /**
-     * @return string
+     * @return ProductNameInterface
      */
-    public function getName();
+    public static function getProductClass();
 }

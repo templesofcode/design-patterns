@@ -10,24 +10,11 @@ namespace DesignPattern\AbstractFactory;
 abstract class AbstractProduct implements ProductInterface
 {
     /**
-     * @var string
-     */
-    protected $name;
-
-    /**
      * AbstractProduct constructor.
-     * @param string $name
+     * @return $this
      */
-    public function __construct($name)
+    public function __construct()
     {
-        $this->name = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
+        return $this;
     }
 }

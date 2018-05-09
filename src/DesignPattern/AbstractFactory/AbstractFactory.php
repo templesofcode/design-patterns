@@ -9,9 +9,29 @@ namespace DesignPattern\AbstractFactory;
  */
 abstract class AbstractFactory
 {
+
     /**
-     * @param ProductsInterface $p
-     * @return
+     * AbstractFactory constructor.
      */
-    public static abstract function create(ProductsInterface $p);
+    public function __construct()
+    {
+        return $this;
+    }
+
+    /**
+     * @param string $productClass
+     * @return bool
+     */
+    abstract public function canCreate($productClass);
+
+    /**
+     * @param string $productClass
+     * @return ProductInterface
+     */
+    abstract public function create($productClass);
+
+    /**
+     * @return AbstractFactory
+     */
+    abstract public static function getInstance();
 }

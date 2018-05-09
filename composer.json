@@ -3,6 +3,7 @@
     "psr-0": { "": "src/" }
   },
   "require": {
-    "doctrine/collections": "dev-master"
+    "doctrine/collections": "dev-master",
+    "phpunit/phpunit": "^7.1"
   }
 }

@@ -2,8 +2,8 @@
 
 namespace DesignPattern\AbstractFactory;
 
-
 use Doctrine\Common\Collections\ArrayCollection;
+//use DesignPattern\AbstractFactory\ProductInterface;
 
 /**
  * Class AbstractProducts
@@ -12,26 +12,33 @@ use Doctrine\Common\Collections\ArrayCollection;
 abstract class AbstractProducts implements ProductsInterface
 {
     /**
-     * @var ProductInterface[]|ArrayCollection
+     * @var ArrayCollection
      */
     protected $products;
 
+    /**
+     * {@inheritdoc}
+     */
     public function __construct(ArrayCollection $products)
     {
         $this->products = $products;
+        return $this;
     }
 
     /**
-     * @return ProductInterface[]|ArrayCollection
+     * {@inheritdoc}
      */
-    public function getProducts()
+    public function addProduct(ProductInterface $product)
     {
-        return $this->products;
+        if ($this->products->contains($product)) {
+            return $this;
+        }
+        $this->products->add($product);
+        return $this;
     }
 
     /**
-     * @param ProductInterface $product
-     * @return bool
+     * {@inheritdoc}
      */
     public function hasProduct(ProductInterface $product)
     {
@@ -40,4 +47,13 @@ abstract class AbstractProducts implements ProductsInterface
         }
         return false;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
 }
