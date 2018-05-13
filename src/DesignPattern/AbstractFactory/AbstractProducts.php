@@ -3,7 +3,6 @@
 namespace DesignPattern\AbstractFactory;
 
 use Doctrine\Common\Collections\ArrayCollection;
-//use DesignPattern\AbstractFactory\ProductInterface;
 
 /**
  * Class AbstractProducts

@@ -2,6 +2,9 @@
 
 namespace DesignPattern\AbstractFactory;
 
+use DesignPattern\AbstractFactory\Exception\UnknownProductClassException;
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Key observations:
  * - making the class abstract prevents and instantiation of it.
@@ -9,11 +12,15 @@ namespace DesignPattern\AbstractFactory;
  */
 abstract class AbstractFactory
 {
+    /**
+     * @var ArrayCollection|AbstractFactory[]
+     */
+    protected static $factories;
 
     /**
      * AbstractFactory constructor.
      */
-    public function __construct()
+    protected function __construct()
     {
         return $this;
     }
@@ -26,12 +33,49 @@ abstract class AbstractFactory
 
     /**
      * @param string $productClass
-     * @return ProductInterface
+     * @return \DesignPattern\AbstractFactory\ProductInterface
+     * @throws UnknownProductClassException
      */
-    abstract public function create($productClass);
+    public function create($productClass)
+    {
+        if (!$this->canCreate($productClass)) {
+            throw new UnknownProductClassException(sprintf(
+                'Unknown class %s',
+                $productClass
+            ));
+        }
+
+        /**
+         * @var ProductInterface $product
+         */
+        $product = new $productClass();
+        return $product;
+    }
 
     /**
+     * The factory method that produces singleton factories. These
+     * factories then produce non-singleton product classes (type ProductInterface).
+     *
+     * @param string $factoryClass
      * @return AbstractFactory
      */
-    abstract public static function getInstance();
+    public static function getInstance($factoryClass)
+    {
+        /**
+         * Check the registry.
+         *
+         * @var bool $keyExists
+         */
+        $keyExists = static::$factories->containsKey($factoryClass);
+        if ($keyExists) {
+            return static::$factories->get($factoryClass);
+        }
+
+        /**
+         * @var AbstractFactory $factory
+         */
+        $factory = new $factoryClass();
+        static::$factories->set($factoryClass, $factory);
+        return $factory;
+    }
 }

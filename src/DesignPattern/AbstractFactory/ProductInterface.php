@@ -7,15 +7,4 @@ namespace DesignPattern\AbstractFactory;
  * @package DesignPattern\AbstractFactory
  */
 interface ProductInterface
-{
-    /**
-     * ProductInterface constructor.
-     * @return $this
-     */
-    public function __construct();
-
-    /**
-     * @return ProductNameInterface
-     */
-    public static function getProductClass();
-}
+{}
