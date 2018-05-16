@@ -22,4 +22,17 @@ class ChatFactory extends AbstractFactory
         ;
         return $verdict;
     }
+
+    /**
+     * Proxy class to parent method
+     * @param string|null $factoryClass
+     * @return ChatFactory|AbstractFactory
+     */
+    public static function getInstance($factoryClass = null)
+    {
+        if (is_null($factoryClass)) {
+            $factoryClass = ChatFactory::class;
+        }
+        return parent::getInstance($factoryClass);
+    }
 }

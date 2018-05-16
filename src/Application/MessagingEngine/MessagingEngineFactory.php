@@ -7,32 +7,30 @@ use DesignPattern\AbstractFactory\AbstractFactory;
 use DesignPattern\AbstractFactory\ProductInterface;
 
 /**
- * Class ChatComponentFactory
+ * Class MessagingEngineFactory
  * @package Application\MessagingEngine
  */
-class ChatComponentFactory extends AbstractFactory
+class MessagingEngineFactory extends AbstractFactory
 {
     /**
-     * @param string $productClass
-     * @return bool
+     * @inheritDoc
      */
     public function canCreate($productClass)
     {
         $verdict = $productClass instanceof ProductInterface
-            && $productClass instanceof ChatComponent
+            && $productClass instanceof MessagingEngine
         ;
         return $verdict;
     }
 
     /**
-     * Proxy class to parent method
-     * @param string|null $factoryClass
-     * @return ChatComponentsFactory|AbstractFactory
+     * @param string $factoryClass
+     * @return AbstractFactory
      */
     public static function getInstance($factoryClass = null)
     {
         if (is_null($factoryClass)) {
-            $factoryClass = ChatComponentFactory::class;
+            $factoryClass = MessagingEngineFactory::class;
         }
         return parent::getInstance($factoryClass);
     }

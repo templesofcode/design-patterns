@@ -22,4 +22,18 @@ class ChatComponentsFactory extends AbstractFactory
         ;
         return $verdict;
     }
+
+
+    /**
+     * Proxy class to parent method
+     * @param string|null $factoryClass
+     * @return ChatComponentsFactory|AbstractFactory
+     */
+    public static function getInstance($factoryClass = null)
+    {
+        if (is_null($factoryClass)) {
+            $factoryClass = ChatComponentsFactory::class;
+        }
+        return parent::getInstance($factoryClass);
+    }
 }

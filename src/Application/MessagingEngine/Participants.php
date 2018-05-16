@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Class Participants
  * @package Application\MessagingEngine
  */
-class Participants extends AbstractProducts
+abstract class Participants extends AbstractProducts
 {
     /**
      * @var ArrayCollection

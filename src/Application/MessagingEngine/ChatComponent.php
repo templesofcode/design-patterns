@@ -13,13 +13,13 @@ abstract class ChatComponent extends AbstractProduct
     /**
      * @var ViewableInterface
      */
-    protected $view = null;
+    protected $view;
 
     /**
      * ChatComponent constructor.
      * @param ViewableInterface $view
      */
-    public function __construct(ViewableInterface $view)
+    public function __construct(ViewableInterface $view = null)
     {
         $this->view = $view;
     }

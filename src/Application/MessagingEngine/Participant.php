@@ -5,6 +5,10 @@ namespace Application\MessagingEngine;
 
 use DesignPattern\AbstractFactory\AbstractProduct;
 
+/**
+ * Class Participant
+ * @package Application\MessagingEngine
+ */
 class Participant extends AbstractProduct
 {
     /**

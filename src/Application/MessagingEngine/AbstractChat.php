@@ -2,7 +2,6 @@
 
 namespace Application\MessagingEngine;
 
-use Application\MessagingEngine\ChatComponents;
 /**
  * Class AbstractChat
  * @package Application\MessagingEngine
@@ -21,10 +20,10 @@ abstract class AbstractChat implements ChatInterface
 
     /**
      * AbstractChat constructor.
-     * @param ChatComponentsInterface $c
-     * @param ParticipantsInterface $p
+     * @param ChatComponents $c
+     * @param Participants $p
      */
-    public function __construct(ChatComponentsInterface $c, ParticipantsInterface $p)
+    public function __construct(ChatComponents $c, Participants $p)
     {
         $this->chatComponents = $c;
         $this->participants = $p;
@@ -32,7 +31,7 @@ abstract class AbstractChat implements ChatInterface
     }
 
     /**
-     * @return ChatComponentsInterface
+     * @return ChatComponents
      */
     public function getChatComponents()
     {
@@ -40,12 +39,30 @@ abstract class AbstractChat implements ChatInterface
     }
 
     /**
-     * @return ParticipantsInterface
+     * @param ChatComponents $chatComponents
+     * @return AbstractChat
+     */
+    public function setChatComponents($chatComponents)
+    {
+        $this->chatComponents = $chatComponents;
+        return $this;
+    }
+
+    /**
+     * @return Participants
      */
     public function getParticipants()
     {
         return $this->participants;
     }
 
-
+    /**
+     * @param Participants $participants
+     * @return AbstractChat
+     */
+    public function setParticipants($participants)
+    {
+        $this->participants = $participants;
+        return $this;
+    }
 }

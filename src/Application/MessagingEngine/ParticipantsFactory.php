@@ -22,4 +22,17 @@ class ParticipantsFactory extends AbstractFactory
         ;
         return $verdict;
     }
+
+    /**
+     * Proxy class to parent method
+     * @param string|null $factoryClass
+     * @return ParticipantsFactory|AbstractFactory
+     */
+    public static function getInstance($factoryClass = null)
+    {
+        if (is_null($factoryClass)) {
+            $factoryClass = ParticipantsFactory::class;
+        }
+        return parent::getInstance($factoryClass);
+    }
 }

@@ -78,4 +78,5 @@ abstract class AbstractFactory
         static::$factories->set($factoryClass, $factory);
         return $factory;
     }
+
 }

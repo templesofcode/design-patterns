@@ -19,7 +19,7 @@ class Text extends ChatComponent
      * @param null $message
      * @return $this
      */
-    public function __construct(ViewableInterface $view, $message = null)
+    public function __construct(ViewableInterface $view = null, $message = null)
     {
         parent::__construct($view);
         $this->message = $message;
