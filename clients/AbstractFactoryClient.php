@@ -30,18 +30,17 @@ class AbstractFactoryClient
         $this->factory = $f;
     }
 
-    public function run($productAClass, $productBClass)
+    public function run()
     {
         try {
 
             /**
              * @var AbstractProductA
              */
-            $productA = $this->factory->create($productAClass);
+            $productA = $this->factory->createProductA();
         } catch (UnknownProductClassException $e) {
             print sprintf(
-                "An error occured while creating product %s, exception message: %s",
-                ProductA1::class,
+                "Exception message: %s",
                 $e->getMessage()
             );
             return 1;
@@ -53,11 +52,10 @@ class AbstractFactoryClient
             /**
              * @var AbstractProductB
              */
-            $productB = $this->factory->create($productBClass);
+            $productB = $this->factory->createProductB();
         } catch (UnknownProductClassException $e) {
             print sprintf(
-                "An error occured while creating product %s, exception message: %s",
-                ProductB1::class,
+                "Eexception message: %s",
                 $e->getMessage()
             );
             return 1;
@@ -76,11 +74,11 @@ class AbstractFactoryClient
 $factory = ConcreteFactory1::getInstance(ConcreteFactory1::class);
 
 $client = new AbstractFactoryClient($factory);
-$client->run(ProductA1::class, ProductB1::class);
+$client->run();
 
 /**
  * @var AbstractProductFactory $factory2
  */
 $factory2 = ConcreteFactory2::getInstance(ConcreteFactory2::class);
 $client = new AbstractFactoryClient($factory2);
-$client->run(ProductA2::class, ProductB2::class);
+$client->run();
