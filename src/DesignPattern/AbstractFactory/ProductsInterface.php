@@ -21,6 +21,13 @@ interface ProductsInterface
     public function addProduct(ProductInterface $product);
 
     /**
+     * @param string $key
+     * @param ProductInterface $product
+     * @return mixed
+     */
+    public function setProduct($key, ProductInterface $product);
+
+    /**
      * @param ProductInterface $product
      * @return bool
      */

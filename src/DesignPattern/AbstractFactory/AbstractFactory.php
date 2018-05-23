@@ -61,6 +61,10 @@ abstract class AbstractFactory
      */
     public static function getInstance($factoryClass)
     {
+        if (!isset(static::$factories)) {
+            static::$factories = new ArrayCollection();
+        }
+
         /**
          * Check the registry.
          *

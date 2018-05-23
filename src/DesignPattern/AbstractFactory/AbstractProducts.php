@@ -18,9 +18,14 @@ abstract class AbstractProducts implements ProductsInterface
     /**
      * {@inheritdoc}
      */
-    public function __construct(ArrayCollection $products)
+    public function __construct(ArrayCollection $products = null)
     {
-        $this->products = $products;
+        if (is_null($products)) {
+            $this->products = new ArrayCollection();
+        } else {
+            $this->products = $products;
+        }
+
         return $this;
     }
 
@@ -34,6 +39,14 @@ abstract class AbstractProducts implements ProductsInterface
         }
         $this->products->add($product);
         return $this;
+    }
+
+    public function setProduct($key, ProductInterface $product)
+    {
+        if ($this->products->containsKey($key)) {
+            return $this;
+        }
+        $this->products->set($key, $product);
     }
 
     /**
