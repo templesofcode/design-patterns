@@ -4,10 +4,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use Application\AbstractFactory\Factory\ConcreteFactory1;
 use Application\AbstractFactory\Factory\ConcreteFactory2;
-use Application\AbstractFactory\ProductA\ProductA1;
-use Application\AbstractFactory\ProductB\ProductB1;
-use Application\AbstractFactory\ProductA\ProductA2;
-use Application\AbstractFactory\ProductB\ProductB2;
 use Application\AbstractFactory\AbstractProductFactory;
 use DesignPattern\AbstractFactory\Exception\UnknownProductClassException;
 use Application\AbstractFactory\AbstractProductA;
